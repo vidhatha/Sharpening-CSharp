@@ -24,10 +24,11 @@ namespace Delegates_Lambdas_Events
             int result = 0;
             MyDelegate fptr = add;
 
-            result = add(10, 20);
+            result = fptr(10, 20);
             Console.WriteLine(result);
 
-            result = subtract(10, 20);
+            fptr = subtract;
+            result = fptr(10, 20);
             Console.WriteLine(result);
 
             Console.ReadLine();
