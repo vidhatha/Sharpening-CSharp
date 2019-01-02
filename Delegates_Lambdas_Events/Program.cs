@@ -9,6 +9,7 @@ namespace Delegates_Lambdas_Events
     class Program
     {
         public delegate int MyDelegate(int i, int j);
+        public delegate void MyDelegateRef(ref int j);
 
         public static int add(int i, int j)
         {
@@ -32,6 +33,17 @@ namespace Delegates_Lambdas_Events
             int r = i - j;
             Console.WriteLine("Result of func2 =" + r);
             return r;
+        }
+
+        public static void composable_D3(ref int j)
+        {
+            Console.WriteLine("Value of ref variable =" + j);
+            j += 20;
+        }
+
+        public static void composable_D4(ref int j)
+        {
+            Console.WriteLine("Value of ref variable =" + j);
         }
 
         static void Main(string[] args)
@@ -65,6 +77,14 @@ namespace Delegates_Lambdas_Events
             fptr1fptr2 -= fptr2;    //remove delegates from chain
             result = fptr1fptr2(100, 10);
             Console.WriteLine("Composable Delegate Result2: " + result);
+
+            //---Composable Delegates with ref variables---
+            MyDelegateRef fptr3 = composable_D3;
+            MyDelegateRef fptr4 = composable_D4;
+            MyDelegateRef fptr3fptr4 = fptr3 + fptr4; //create delegate chain
+            int combined = 10;
+            fptr3fptr4(ref combined);
+            Console.WriteLine("Composable Delegate with Ref variable Result1: " + combined);
 
             Console.ReadLine();
         }
