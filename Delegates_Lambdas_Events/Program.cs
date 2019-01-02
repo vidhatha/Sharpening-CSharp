@@ -86,6 +86,10 @@ namespace Delegates_Lambdas_Events
             fptr3fptr4(ref combined);
             Console.WriteLine("Composable Delegate with Ref variable Result1: " + combined);
 
+            //---Shipping Fee Calculation Program using Delegates---
+            Shipping_Delegates sd = new Shipping_Delegates();
+            sd.CalculateShippingFees();
+
             Console.ReadLine();
         }
     }
