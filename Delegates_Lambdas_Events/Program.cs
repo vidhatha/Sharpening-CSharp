@@ -22,14 +22,25 @@ namespace Delegates_Lambdas_Events
         static void Main(string[] args)
         {
             int result = 0;
-            MyDelegate fptr = add;
-
+            MyDelegate fptr;
+            
+            //---Basic Delegates---
+            fptr= add;
             result = fptr(10, 20);
             Console.WriteLine(result);
 
             fptr = subtract;
             result = fptr(10, 20);
             Console.WriteLine(result);
+
+            //---Anonymous Delegates---
+            fptr = delegate (int arg1, int arg2)
+            {
+                return (arg1 + arg2);
+            };
+
+            result = fptr(30, 40);
+            Console.WriteLine("Anonymous Delegate result:" + result);
 
             Console.ReadLine();
         }
